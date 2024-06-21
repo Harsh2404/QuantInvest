@@ -1,0 +1,36 @@
+.sa-container {
+  display: flex;
+  padding: 0 1rem;
+  margin: 1rem 0 0;
+}
+
+.sa-table-container {
+  box-shadow: 0px 0px 10px #000000;
+  padding: 0.5rem 1rem;
+  flex: 1;
+  margin: 0 0.75rem 2rem;
+  border-radius: 15px;
+}
+
+.sa-charts-list {
+  width: 100%;
+  padding:0;
+  margin: 0;
+  list-style: none;
+}
+
+.sa-charts-list li {
+  border-bottom: 1px solid #353535;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.sa-charts-list li:first-child, .sa-charts-list li:last-child {
+  border-bottom: none;
+}
+.sa-charts-list li:first-child h3 {
+  text-align: left;
+}
+.sa-charts-list li .sa-chart-wrapper, .sa-charts-list li h3 {
+  flex: 1;
+}

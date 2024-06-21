@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Symbol Search</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+  <!-- <script src="https://code.highcharts.com/highcharts.js"></script> -->
+  <script src="https://code.highcharts.com/stock/highstock.js"></script>
+  <script src="https://code.highcharts.com/highcharts-more.js"></script>
+  <script src="https://code.highcharts.com/modules/data.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/modules/export-data.js"></script>
+  <script src="https://code.highcharts.com/stock/modules/heikinashi.js"></script>
+  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+  <script src="https://code.highcharts.com/modules/annotations.js"></script>
+
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/simple-statistics/7.1.1/simple-statistics.min.js"></script> -->
+  <link href="https://fonts.googleapis.com/css?family=Anybody" rel="stylesheet">
+  <link rel="stylesheet" href="./css/searchbar.css">
+  <link rel="stylesheet" href="./css/analysis_hirarcy.css">
+  <link rel="stylesheet" href="./css/live_price.css">
+  <link rel="stylesheet" href="./css/historical_price.css">
+  <link rel="stylesheet" href="./css/ratio_analysis.css">
+  <link rel="stylesheet" href="./css/statement_analysis.css">
+  <link rel="stylesheet" href="./css/theories_models_analysis.css">
+  <!-- <link rel="stylesheet" href="chart_analysis.css"> -->
+  <link rel="stylesheet" href="./css/stats_analysis.css">
+  <link rel="stylesheet" href="./css/indicator_analysis.css">
+  <link rel="stylesheet" href="./css/login.css">
+
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    integrity="sha512-novL3XyZa2F00KIoPYyQVCCW9QF0eAqF/7X6LrUuFehh2ML+gqx7T/fIilTz2R/AFw8KdsmRjtCJXhTvHig40g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+  <link rel="stylesheet" href="./css/global.css">
+  <!-- Add this line in the <head> section of your HTML file -->
+
+  <!-- Add this line at the end of the <body> section of your HTML file, before any other JavaScript -->
+
+
+</head>
+
+<body>
+  <div class="quant-main">
+    <header>
+      <div class="upper-nav">
+        <div class="head-main-container">
+          <div class="search-wrapper">
+            <input type="search" id="search" placeholder="Search Symbol or Company">
+            <div id="results"></div>
+          </div>
+          <div class="navbar">
+            <a onclick="scrollToSection('ratio-analysis')">
+              <li>Ratio</li>
+            </a>
+            <a onclick="scrollToSection('statement-analysis')">
+              <li>Statement</li>
+            </a>
+            <a onclick="scrollToSection('theories')">
+              <li>Theories & Models</li>
+            </a>
+            <!-- <a onclick="scrollToSection('chart-analysis')">
+          <li>Charts Analysis</li>
+        </a> -->
+            <a onclick="scrollToSection('indicator-analysis')">
+              <li>Indicator</li>
+            </a>
+            <!-- <a onclick="scrollToSection('statistics-analysis')">
+          <li>Statistics Analysis</li>
+        </a> -->
+          </div>
+        </div>
+
+
+
+        <!-- <div class="live_price-container"> -->
+        <div id="details-container">
+          <!-- Details will be populated here -->
+        </div>
+
+        <input type="hidden" id="comp-symbol" value="" />
+        <input type="hidden" id="comp-exchange" value="" />
+    </header>
+    <div class="main">
+      <section class="container" id="historical_price">
+        <h2>Historical Price</h2>
+        <figure class="highcharts-figure">
+          <div id="historical_chart"></div>
+        </figure>
+      </section>
+
+      <section class="container" id="ratio-analysis">
+        <h2>Ratio Analysis</h2>
+        <!-- Add the chart content here -->
+        <div class="horiz-buttons ra-header-btns">
+          <div><button class="btn-valuations active">Valuations</button></div>
+          <div><button class="btn-risk">Risk</button></div>
+          <div><button class="btn-effeciency">Effeciency</button></div>
+          <div><button class="btn-profitability">Profitability</button></div>
+        </div>
+        <div class="ratio-charts-block">
+          <div class="ratio-valuations-charts">
+            <div class="ratio-s-graph">
+              <h3>Ben Graham Number</h3>
+              <div id="v-ben-graham"></div>
+            </div>
+            <div class="ratio-s-graph">
+              <h3>Enterprise Value (EV)</h3>
+              <div id="v-enterprise-value"></div>
+            </div>
+            <!-- <div class="ratio-s-graph"><div id="v-market-cap"></div></div> -->
+            <div class="ratio-s-graph">
+              <h3>P/E Ratio (Adjusted)</h3>
+              <div id="v-pe-ratio"></div>
+            </div>
+            <div class="ratio-s-graph">
+              <h3>P/B Ratio</h3>
+              <div id="v-pb-ratio"></div>
+            </div>
+            <div class="ratio-s-graph">
+              <h3>price/ sales</h3>
+              <div id="v-price-sales"></div>
+            </div>
+            <div class="ratio-s-graph">
+              <h3>book value per share</h3>
+              <div id="v-book-value"></div>
+            </div>
+          </div>
+          <div class="ratio-risk-charts hidden">
+            <div class="ratio-s-graph">
+              <h3>current Ratio</h3>
+              <div id="r-current-ratio"></div>
+            </div>
+            <div class="ratio-s-graph">
+              <h3>Debt/Equity</h3>
+              <div id="r-debt-equity"></div>
+            </div>
+            <div class="ratio-s-graph">
+              <h3>Equity/Assets</h3>
+              <div id="r-equity-assets"></div>
+            </div>
+          </div>
+          <div class="ratio-effeciency-charts hidden">
+            <div class="ratio-s-graph">
+              <h3>Assest turnover </h3>
+              <div id="e-asset-turnover"></div>
+            </div>
+            <div class="ratio-s-graph">
+              <h3>Inventory Turnover </h3>
+              <div id="e-inventory-turnover"></div>
+            </div>
+            <div class="ratio-s-graph">
+              <h3>working capital</h3>
+              <div id="e-working-capital"></div>
+            </div>
+            <div class="ratio-s-graph">
+              <h3>return on assests </h3>
+              <div id="e-return-on-assets"></div>
+            </div>
+            <div class="ratio-s-graph">
+              <h3>return on equity</h3>
+              <div id="e-return-on-equity"></div>
+            </div>
+          </div>
+          <div class="ratio-profitability-charts hidden">
+            <div class="ratio-s-graph">
+              <h3>EPS</h3>
+              <div id="p-eps"></div>
+            </div>
+            <div class="ratio-s-graph">
+              <h3>net profit</h3>
+              <div id="p-net-profit"></div>
+            </div>
+            <div class="ratio-s-graph">
+              <h3>EBIT</h3>
+              <div id="p-ebit"></div>
+            </div>
+            <div class="ratio-s-graph">
+              <h3>gross profit</h3>
+              <div id="p-gross-profit"></div>
+            </div>
+            <div class="ratio-s-graph">
+              <h3>revenue</h3>
+              <div id="p-sales"></div>
+            </div>
+            <div class="ratio-s-graph">
+              <h3>EBITDA</h3>
+              <div id="p-ebitda"></div>
+            </div>
+            <div class="ratio-s-graph">
+              <h3>cash flow growth</h3>
+              <div id="p-cash-flow-growth"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="container" id="statement-analysis">
+        <h2>Statement Analysis</h2>
+        <div class="horiz-buttons sa-header-btns">
+          <div><button class="btn-income-statement active">INCOME STATMENT</button></div>
+          <div><button class="btn-balance-sheet">BALANCE SHEET</button></div>
+          <div><button class="btn-cash-flow">CASH FLOW</button></div>
+        </div>
+        <div class="sa-container" id="sa-income-statement">
+          <div class="sa-table-container">
+            <ul class="sa-charts-list">
+              <li>
+                <div class="sa-chart-wrapper">
+                  <h3>comparative analysis</h3>
+                </div>
+                <h3></h3>
+                <div class="sa-chart-wrapper">
+                  <h3>commom size analysis</h3>
+                </div>
+              </li>
+              <li>
+                <div class="sa-chart-wrapper" id="sa-sales-chart"></div>
+                <h3>Sales</h3>
+                <div class="sa-chart-wrapper" id="sa-sales-per-chart"></div>
+              </li>
+              <li>
+                <div class="sa-chart-wrapper" id="sa-gp-chart"></div>
+                <h3>Gross Profit</h3>
+                <div class="sa-chart-wrapper" id="sa-gp-per-chart"></div>
+              </li>
+              <li>
+                <div class="sa-chart-wrapper" id="sa-oi-chart"></div>
+                <h3>operating income</h3>
+                <div class="sa-chart-wrapper" id="sa-oi-per-chart"></div>
+              </li>
+            </ul>
+          </div>
+          <div class="sa-table-container">
+            <ul class="sa-charts-list">
+              <li>
+                <div class="sa-chart-wrapper">
+                  <h3>comparative analysis</h3>
+                </div>
+                <h3></h3>
+                <div class="sa-chart-wrapper">
+                  <h3>commom size analysis</h3>
+                </div>
+              </li>
+              <li>
+                <div class="sa-chart-wrapper" id="sa-pi-chart"></div>
+                <h3>pretax income</h3>
+                <div class="sa-chart-wrapper" id="sa-pi-per-chart"></div>
+              </li>
+              <li>
+                <div class="sa-chart-wrapper" id="sa-ni-chart"></div>
+                <h3>net income</h3>
+                <div class="sa-chart-wrapper" id="sa-ni-per-chart"></div>
+              </li>
+              <li>
+                <div class="sa-chart-wrapper" id="sa-ebi-chart"></div>
+                <h3>ebitda</h3>
+                <div class="sa-chart-wrapper" id="sa-ebi-per-chart"></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="sa-container hidden" id="sa-balance-sheet">
+          <div class="sa-table-container">
+            <ul class="sa-charts-list">
+              <li>
+                <div class="sa-chart-wrapper">
+                  <h3>comparative analysis</h3>
+                </div>
+                <h3></h3>
+                <div class="sa-chart-wrapper">
+                  <h3>commom size analysis</h3>
+                </div>
+              </li>
+              <li>
+                <div class="sa-chart-wrapper" id="sa-curr-assets"></div>
+                <h3>Total Current Assets</h3>
+                <div class="sa-chart-wrapper" id="sa-curr-assets-per"></div>
+              </li>
+              <li>
+                <div class="sa-chart-wrapper" id="sa-non-curr-assets"></div>
+                <h3>Total Non Current Assets</h3>
+                <div class="sa-chart-wrapper" id="sa-non-curr-assets-per"></div>
+              </li>
+              <li>
+                <div class="sa-chart-wrapper" id="sa-assets"></div>
+                <h3>Total Assets</h3>
+                <div class="sa-chart-wrapper" id="sa-assets-per"></div>
+              </li>
+              <li>
+                <div class="sa-chart-wrapper" id="sa-c-liabilities"></div>
+                <h3>Total Current liabilities</h3>
+                <div class="sa-chart-wrapper" id="sa-c-liabilities-per"></div>
+              </li>
+            </ul>
+          </div>
+          <div class="sa-table-container">
+            <ul class="sa-charts-list">
+              <li>
+                <div class="sa-chart-wrapper">
+                  <h3>comparative analysis</h3>
+                </div>
+                <h3></h3>
+                <div class="sa-chart-wrapper">
+                  <h3>commom size analysis</h3>
+                </div>
+              </li>
+              <li>
+                <div class="sa-chart-wrapper" id="sa-non-c-liabilities"></div>
+                <h3>Total Non Current liabilities</h3>
+                <div class="sa-chart-wrapper" id="sa-non-c-liabilities-per"></div>
+              </li>
+              <li>
+                <div class="sa-chart-wrapper" id="sa-liabilities"></div>
+                <h3>Total liabilities</h3>
+                <div class="sa-chart-wrapper" id="sa-liabilities-per"></div>
+              </li>
+              <li>
+                <div class="sa-chart-wrapper" id="sa-equity"></div>
+                <h3>Total shareholders equity</h3>
+                <div class="sa-chart-wrapper" id="sa-equity-per"></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="sa-container hidden" id="sa-cash-flow">
+          <div class="sa-table-container">
+            <ul class="sa-charts-list">
+              <li>
+                <div class="sa-chart-wrapper">
+                  <h3>comparative analysis</h3>
+                </div>
+                <h3></h3>
+                <div class="sa-chart-wrapper">
+                  <h3>commom size analysis</h3>
+                </div>
+              </li>
+              <li>
+                <div class="sa-chart-wrapper" id="sa-operating-cf"></div>
+                <h3>Operating cash Flow</h3>
+                <div class="sa-chart-wrapper" id="sa-operating-cf-per"></div>
+              </li>
+              <li>
+                <div class="sa-chart-wrapper" id="sa-investing-cf"></div>
+                <h3>Investing cash Flow</h3>
+                <div class="sa-chart-wrapper" id="sa-investing-cf-per"></div>
+              </li>
+              <li>
+                <div class="sa-chart-wrapper" id="sa-financing-cf"></div>
+                <h3>financing cash Flow</h3>
+                <div class="sa-chart-wrapper" id="sa-financing-cf-per"></div>
+              </li>
+            </ul>
+          </div>
+          <div class="sa-table-container">
+            <ul class="sa-charts-list">
+              <li>
+                <div class="sa-chart-wrapper">
+                  <h3>comparative analysis</h3>
+                </div>
+                <h3></h3>
+                <div class="sa-chart-wrapper">
+                  <h3>commom size analysis</h3>
+                </div>
+              </li>
+              <li>
+                <div class="sa-chart-wrapper" id="sa-free-cf"></div>
+                <h3>financing cash Flow</h3>
+                <div class="sa-chart-wrapper" id="sa-free-cf-per"></div>
+              </li>
+              <li>
+                <div class="sa-chart-wrapper" id="sa-end-cash-position"></div>
+                <h3>End Cash Position</h3>
+                <div class="sa-chart-wrapper" id="sa-end-cash-position-per"></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- <section class="container" id="theories">
+      <div class="price_multiple-container"></div>
+      <div class="g_number-container"></div>
+      <div class="dcf-container"></div>
+      <div class="ddm-container"></div>
+      <div class="piotroski_score-container"></div>
+      <div class="altmanz_score-container"></div>
+      <div class="monte_carlo-container"></div>
+    </section> -->
+
+      <section class="container hidden" id="chart-analysis">
+        <h2>Chart Analysis</h2>
+        <div class="horiz-buttons ca-header-btns">
+          <div><button class="btn-renko active">renko</button></div>
+          <div><button class="btn-heikin-ashi">Heikin Ashi</button></div>
+          <div><button class="btn-line-break">line break</button></div>
+        </div>
+        <div class="ca-charts-block">
+          <div class="ca-renko-charts">
+            <div class="ca-s-graph">
+              <div id="c-renko"></div>
+            </div>
+          </div>
+          <div class="ca-ha-charts hidden">
+            <div class="ca-s-graph">
+              <div id="c-ha"></div>
+            </div>
+          </div>
+          <div class="ca-lb-charts hidden">
+            <div class="ca-s-graph">
+              <div id="c-lb"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="container" id="indicator-analysis">
+        <h2>Indicator Analysis</h2>
+        <div class="horiz-buttons ia-header-btns">
+          <div><button class="btn-trend-indicator active">trend indicator</button></div>
+          <div><button class="btn-volatality-indicator">volatality indicator</button></div>
+          <div><button class="btn-momentum-indicator">momentum indicator</button></div>
+        </div>
+        <div class="indicator-charts-block">
+          <div class="indicator-trend-charts">
+            <div class="indicator-s-graph">
+              <h3>EMA - Exponential Moving Average</h3>
+              <div id="i-ema"></div>
+            </div>
+            <div class="indicator-s-graph">
+              <h3>WMA - Weighted Moving Average</h3>
+              <div id="i-wma"></div>
+            </div>
+            <div class="indicator-s-graph">
+              <h3>MA - Moving Average</h3>
+              <div id="i-ma"></div>
+            </div>
+            <div class="indicator-s-graph">
+              <h3>ADX - Average Directional Index</h3>
+              <div id="i-adx"></div>
+            </div>
+            <div class="indicator-s-graph">
+              <h3>AROON - Aroon Indicator</h3>
+              <div id="i-aroon"></div>
+            </div>
+          </div>
+        </div>
+        <div class="volatality-indicator-charts hidden">
+          <div class="indicator-s-graph">
+            <h3>ATR - Average True Range</h3>
+            <div id="i-atr"></div>
+          </div>
+          <div class="indicator-s-graph">
+            <h3>BETA</h3>
+            <div id="i-beta"></div>
+          </div>
+          <div class="indicator-s-graph">
+            <h3>BBANDS - Bollinger Bands</h3>
+            <div id="i-bband"></div>
+          </div>
+          <div class="indicator-s-graph">
+            <h3>STDDEV - Standard Deviation</h3>
+            <div id="i-stddev"></div>
+          </div>
+        </div>
+        <div class="momentum-indicator-charts hidden">
+          <div class="indicator-s-graph">
+            <h3>RSI - Relative Strength Index</h3>
+            <div id="i-rsi"></div>
+          </div>
+          <div class="indicator-s-graph">
+            <h3>MACD - Moving Average Convergence Divergence</h3>
+            <div id="i-macd"></div>
+          </div>
+          <div class="indicator-s-graph">
+            <h3>WILLR - Williams</h3>
+            <div id="i-willr"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="container" id="theories">
+        <h2>Theories & Model Analysis</h2>
+        <!-- Add the chart content here -->
+        <div class="horiz-buttons tm-header-btns">
+          <div><button class="btn-tm-valuations active">Valuations</button></div>
+          <div><button class="btn-tm-risk">Risk</button></div>
+          <div><button class="btn-tm-effeciency">Effeciency</button></div>
+        </div>
+        <div class="tm-charts-block">
+          <div class="tm-valuations-charts">
+            <div class="tm-half-charts dcf-block">
+              <h3>DCF Model</h3>
+              <div class="dcf-table">
+                <table>
+                  <tr>
+                    <th></th>
+                    <th class="dcf-y1"></th>
+                    <th class="dcf-y2"></th>
+                    <th class="dcf-y3"></th>
+                    <th class="dcf-y4"></th>
+                  </tr>
+                  <tr>
+                    <td>Free Cash Flow</td>
+                    <td>
+                      <div class="dcf-upsl">
+                        <div>
+                          <input type="number" id="dcf-cf-y1" value="" onChange="handleDCFvalue()" />
+                        </div>
+                        <div>
+                          <select id="dcf-cf-y1-unit">
+                            <option key="K">K</option>
+                            <option key="M">M</option>
+                            <option key="B">B</option>
+                          </select>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="dcf-upsl">
+                        <div>
+                          <input type="number" id="dcf-cf-y2" value="" onChange="handleDCFvalue()" />
+                        </div>
+                        <div>
+                          <select id="dcf-cf-y2-unit">
+                            <option key="K">K</option>
+                            <option key="M">M</option>
+                            <option key="B">B</option>
+                          </select>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="dcf-upsl">
+                        <div>
+                          <input type="number" id="dcf-cf-y3" value="" onChange="handleDCFvalue()" />
+                        </div>
+                        <div>
+                          <select id="dcf-cf-y3-unit">
+                            <option key="K">K</option>
+                            <option key="M">M</option>
+                            <option key="B">B</option>
+                          </select>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="dcf-upsl">
+                        <div>
+                          <input type="number" id="dcf-cf-y4" value="" onChange="handleDCFvalue()" />
+                        </div>
+                        <div>
+                          <select id="dcf-cf-y4-unit">
+                            <option key="K">K</option>
+                            <option key="M">M</option>
+                            <option key="B">B</option>
+                          </select>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Discount Rate</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <div class="symb-inp">
+                        <input type="number" id="dcf-dis-rate" value="12" onChange="handleDCFvalue()" />
+                        <span>%</span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Inflatione</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <div class="symb-inp">
+                        <input type="number" id="dcf-inflation" value="5" onChange="handleDCFvalue()" />
+                        <span>%</span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Tax</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <div class="symb-inp">
+                        <input type="number" id="dcf-tax" value="15" onChange="handleDCFvalue()" />
+                        <span>%</span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>net discount rate</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <span class="dcf-net-dis-rate">9.6 </span> <span>%</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>DFC value</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <b class="dcf-val"></b>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+              <div id="dcf-chart">
+
+              </div>
+            </div>
+            <div class="tm-half-charts ddm-block">
+              <h3>DDM Model</h3>
+              <div class="ddm-table">
+                <table>
+                  <tr>
+                    <th></th>
+                    <th class="ddm-y1"></th>
+                    <th class="ddm-y2"></th>
+                    <th class="ddm-y3"></th>
+                    <th class="ddm-y4"></th>
+                  </tr>
+                  <tr>
+                    <td>Dividend</td>
+                    <td><input type="number" id="ddm-divid-y1" value="" onChange="handleDDMvalue()" /></td>
+                    <td><input type="number" id="ddm-divid-y2" value="" onChange="handleDDMvalue()" /></td>
+                    <td><input type="number" id="ddm-divid-y3" value="" onChange="handleDDMvalue()" /></td>
+                    <td><input type="number" id="ddm-divid-y4" value="" onChange="handleDDMvalue()" /></td>
+                  </tr>
+                  <tr>
+                    <td>Present value of dividend</td>
+                    <td><input type="number" id="ddm-pv-divid-y1" value="" onChange="handleDDMvalue()" /></td>
+                    <td><input type="number" id="ddm-pv-divid-y2" value="" onChange="handleDDMvalue()" /></td>
+                    <td><input type="number" id="ddm-pv-divid-y3" value="" onChange="handleDDMvalue()" /></td>
+                    <td><input type="number" id="ddm-pv-divid-y4" value="" onChange="handleDDMvalue()" /></td>
+                    <!-- <td>
+                      <div class="dcf-upsl">
+                        <div>
+                          <input type="number" id="ddm-pv-divid-y1" value="" onChange="handleDDMvalue()" />
+                        </div>
+                        <div>
+                          <select id="ddm-pv-divid-y1-unit">
+                            <option key="K">K</option>
+                            <option key="M">M</option>
+                            <option key="B">B</option>
+                          </select>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="dcf-upsl">
+                        <div>
+                          <input type="number" id="ddm-pv-divid-y2" value="" onChange="handleDDMvalue()" />
+                        </div>
+                        <div>
+                          <select id="ddm-pv-divid-y2-unit">
+                            <option key="K">K</option>
+                            <option key="M">M</option>
+                            <option key="B">B</option>
+                          </select>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="dcf-upsl">
+                        <div>
+                          <input type="number" id="ddm-pv-divid-y3" value="" onChange="handleDDMvalue()" />
+                        </div>
+                        <div>
+                          <select id="ddm-pv-divid-y3-unit">
+                            <option key="K">K</option>
+                            <option key="M">M</option>
+                            <option key="B">B</option>
+                          </select>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="dcf-upsl">
+                        <div>
+                          <input type="number" id="ddm-pv-divid-y4" value="" onChange="handleDDMvalue()" />
+                        </div>
+                        <div>
+                          <select id="ddm-pv-divid-y4-unit">
+                            <option key="K">K</option>
+                            <option key="M">M</option>
+                            <option key="B">B</option>
+                          </select>
+                        </div>
+                      </div>
+                    </td> -->
+                  </tr>
+                  <tr>
+                    <td>Selling Price</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <input type="number" id="ddm-sell-price" value="12" onChange="handleDDMvalue()" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Present value of Selling Price</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <input type="number" id="ddm-pv-sell-price" value="12" onChange="handleDDMvalue()" />
+                    </td>
+                  </tr>
+                  <tr></tr>
+                  <tr>
+                    <td>Discount Rate</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <div class="symb-inp">
+                        <input type="number" id="ddm-dis-rate" value="12" onChange="handleDDMvalue()" />
+                        <span>%</span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Inflatione</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <div class="symb-inp">
+                        <input type="number" id="ddm-inflation" value="5" onChange="handleDDMvalue()" />
+                        <span>%</span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Tax</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <div class="symb-inp">
+                        <input type="number" id="ddm-tax" value="15" onChange="handleDDMvalue()" />
+                        <span>%</span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>net discount rate</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <span class="ddm-net-dis-rate">9.6 </span> <span>%</span>
+                    </td>
+                  </tr>
+                </table>
+                <div class="symb-inp dcf-value-res">
+                  <span>DDM value</span>
+                  <b class="ddm-val"></b>
+                </div>
+              </div>
+              <div id="ddm-chart">
+
+              </div>
+            </div>
+          </div>
+          <div class="tm-risk-charts hidden">
+            <h3>ALTMAN Z SCORE</h3>
+            <div class="tm-risk-container">
+              <div>
+                <table>
+                  <tr>
+                    <td class="alt-y1"></td>
+                    <td class="alt-val-y1"></td>
+                  </tr>
+                  <tr>
+                    <td class="alt-y2"></td>
+                    <td class="alt-val-y2"></td>
+                  </tr>
+                  <tr>
+                    <td class="alt-y3"></td>
+                    <td class="alt-val-y3"></td>
+                  </tr>
+                  <tr>
+                    <td class="alt-y4"></td>
+                    <td class="alt-val-y4"></td>
+                  </tr>
+                  <!-- <tr>
+              <th></th>
+              <th class="alt-y1"></th>
+              <th class="alt-y2"></th>
+              <th class="alt-y3"></th>
+              <th class="alt-y4"></th>
+            </tr>
+            <tr>
+              <td>ALTMAN Z SCORE</td>
+              <td class="alt-val-y1"></td>
+              <td class="alt-val-y2"></td>
+              <td class="alt-val-y3"></td>
+              <td class="alt-val-y4"></td>
+            </tr> -->
+                </table>
+              </div>
+              <div id="tm-risk-bar"></div>
+            </div>
+          </div>
+          <div class="tm-effeciency-charts hidden">
+            <div class="tm-half-charts">
+              <h3>PIOTROSKI SCORE</h3>
+              <div id="tm-effeciency-bar"></div>
+            </div>
+            <div class="tm-half-charts">
+              <h3>PRICE MULTIPLE</h3>
+              <div id="tm-price-multiple-bar"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="chartContainer" class="container"></section>
+
+    </div>
+  </div>
+
+  <!-- <div class="modal-main hidden">
+    <div class="login-modal">
+      <div class="login-wrapper">
+        <h2>Login</h2>
+        <div class="login-err hidden">The login credentials you entered are invalid.</div>
+        <form>
+          <div class="form-group">
+            <input type="email" id="login-email" name="login-email" class="inputText" placeholder=" " />
+            <label for="login-email">Your email address</label>
+          </div>
+          <div class="form-group">
+            <input type="password" id="login-password" name="login-password" placeholder=" " />
+            <label for="login-password">Your password</label>
+          </div>
+          <div class="form-group">
+            <button type="button" onClick="handleLogin()" id="login-submit">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- <script src="live_price.js"></script> -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js" integrity="sha512-kN/9PVo+ZRFhOjtfhOu7M7zdwC9uYb3B/yOVkG8e7kD53vt9UnDOL5iCCF0D9aR8c5OapQ7WjMYBXe3Oqg5JFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+  <script src="./js/jquery-3.7.0.min.js"></script>
+  <script src="https://kit.fontawesome.com/6474384cc8.js" crossorigin="anonymous"></script>
+  <!-- <script src="statement_analysis.js"></script> -->
+
+  <script src="./js/indicator_analysis.js"></script>
+  <script src="./js/ratio_analysis.js"></script>
+  <script src="./js/historical_price.js"></script>
+  <script src="./js/main.js"></script>
+  <script src="./js/login.js"></script>
+
+  <!-- <script src="theories_models_analysis.js"></script> -->
+  <!-- <script src="chart_analysis.js"></script> -->
+  <!-- <script src="statement_analysis.js"></script> -->
+  <!-- <script src="stats_analysis.js"></script> -->
+
+</body>
+
+</html>

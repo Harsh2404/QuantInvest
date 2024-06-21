@@ -1,0 +1,264 @@
+.fundamentals-container {
+  width: 15vw;
+  /* Adjust the width as per your preference */
+  height: 5vh;
+  /* Adjust the height as per your preference */
+  border: none;
+  border-radius: 50rem;
+  overflow: hidden;
+  box-shadow: 0px 0px 10px #474747;
+  margin-top: 1%;
+  margin-left: 17%;
+  /* Adjust the margin as per your preference */
+  background: #FF8000;
+}
+
+.fundamentals-container .chart-title {
+  padding: 5%;
+  /* Adjust the padding as per your preference */
+  color: #ffFFFF;
+  font-size: 1em;
+  /* Adjust the font size as per your preference */
+  font-weight: bold;
+  opacity: 0.5;
+  text-align: center;
+}
+
+.fundamentals-container:hover {
+  background: #fFC285;
+  /* Change the background color on hover */
+}
+
+.technicals-container {
+  width: 15vw;
+  /* Adjust the width as per your preference */
+  height: 5vh;
+  /* Adjust the height as per your preference */
+  border: none;
+  border-radius: 50rem;
+  overflow: hidden;
+  box-shadow: 0px 0px 10px #474747;
+  margin-top: -2.5%;
+  margin-left: 67%;
+  /* Adjust the margin as per your preference */
+  background: #FF8000;
+}
+
+.technicals-container .chart-title {
+  padding: 5%;
+  /* Adjust the padding as per your preference */
+  color: #ffffff;
+  font-size: 1em;
+  /* Adjust the font size as per your preference */
+  font-weight: bold;
+  opacity: 0.5;
+  text-align: center;
+}
+
+.technicals-container:hover {
+  background: #fFC285;
+  /* Change the background color on hover */
+}
+
+.ratios_analysis-container {
+  width: 15vw;
+  /* Adjust the width as per your preference */
+  height: 5vh;
+  /* Adjust the height as per your preference */
+  border: none;
+  border-radius: 50rem;
+  overflow: hidden;
+  box-shadow: 0px 0px 10px #474747;
+  margin-top: 0.5%;
+  margin-left: 1%;
+  /* Adjust the margin as per your preference */
+  background: #474747;
+  cursor: pointer;
+}
+
+.ratios_analysis-container .chart-title {
+  padding: 5%;
+  /* Adjust the padding as per your preference */
+  color: #ffffff;
+  font-size: 1em;
+  /* Adjust the font size as per your preference */
+  font-weight: bold;
+  opacity: 0.5;
+  text-align: center;
+}
+
+.ratios_analysis-container:hover {
+  background: #fFC285;
+  /* Change the background color on hover */
+}
+
+.statements_analysis-container {
+  width: 15vw;
+  /* Adjust the width as per your preference */
+  height: 5vh;
+  /* Adjust the height as per your preference */
+  border: none;
+  border-radius: 50rem;
+  overflow: hidden;
+  box-shadow: 0px 0px 10px #474747;
+  margin-top: -2.5%;
+  margin-left: 17%;
+  /* Adjust the margin as per your preference */
+  background: #474747;
+  cursor: pointer;
+}
+
+.statements_analysis-container .chart-title {
+  padding: 5%;
+  /* Adjust the padding as per your preference */
+  color: #ffffff;
+  font-size: 1em;
+  /* Adjust the font size as per your preference */
+  font-weight: bold;
+  opacity: 0.5;
+  text-align: center;
+}
+
+.statements_analysis-container:hover {
+  background: #fFC285;
+  /* Change the background color on hover */
+}
+
+.theory_model_analysis-container {
+  width: 15vw;
+  /* Adjust the width as per your preference */
+  height: 5vh;
+  /* Adjust the height as per your preference */
+  border: none;
+  border-radius: 50rem;
+  overflow: hidden;
+  box-shadow: 0px 0px 10px #474747;
+  margin-top: -2.5%;
+  margin-left: 33%;
+  /* Adjust the margin as per your preference */
+  background: #474747;
+  cursor: pointer;
+}
+
+.theory_model_analysis-container .chart-title {
+  padding: 5%;
+  /* Adjust the padding as per your preference */
+  color: #ffffff;
+  font-size: 1em;
+  /* Adjust the font size as per your preference */
+  font-weight: bold;
+  opacity: 0.5;
+  text-align: center;
+}
+
+.theory_model_analysis-container:hover {
+  background: #fFC285;
+  /* Change the background color on hover */
+}
+
+.charts_analysis-container {
+  width: 15vw;
+  /* Adjust the width as per your preference */
+  height: 5vh;
+  /* Adjust the height as per your preference */
+  border: none;
+  border-radius: 50rem;
+  overflow: hidden;
+  box-shadow: 0px 0px 10px #474747;
+  margin-top: -2.5%;
+  margin-left: 51%;
+  /* Adjust the margin as per your preference */
+  background: #474747;
+  cursor: pointer;
+}
+
+.charts_analysis-container .chart-title {
+  padding: 5%;
+  /* Adjust the padding as per your preference */
+  color: #ffffff;
+  font-size: 1em;
+  /* Adjust the font size as per your preference */
+  font-weight: bold;
+  opacity: 0.5;
+  text-align: center;
+}
+
+.charts_analysis-container:hover {
+  background: #fFC285;
+  /* Change the background color on hover */
+}
+
+.indicators_analysis-container {
+  width: 15vw;
+  /* Adjust the width as per your preference */
+  height: 5vh;
+  /* Adjust the height as per your preference */
+  border: none;
+  border-radius: 50rem;
+  overflow: hidden;
+  box-shadow: 0px 0px 10px #474747;
+  margin-top: -2.5%;
+  margin-left: 67%;
+  /* Adjust the margin as per your preference */
+  background: #474747;
+  cursor: pointer;
+}
+
+.indicators_analysis-container .chart-title {
+  padding: 5%;
+  /* Adjust the padding as per your preference */
+  color: #ffffff;
+  font-size: 1em;
+  /* Adjust the font size as per your preference */
+  font-weight: bold;
+  opacity: 0.5;
+  text-align: center;
+}
+
+.indicators_analysis-container:hover {
+  background: #fFC285;
+  /* Change the background color on hover */
+}
+
+.stat_analysis-container {
+  width: 15vw;
+  /* Adjust the width as per your preference */
+  height: 5vh;
+  /* Adjust the height as per your preference */
+  border: none;
+  border-radius: 50rem;
+  overflow: hidden;
+  box-shadow: 0px 0px 10px #474747;
+  margin-top: -2.5%;
+  margin-left: 83%;
+  /* Adjust the margin as per your preference */
+  background: #474747;
+  cursor: pointer;
+}
+
+.stat_analysis-container .chart-title {
+  padding: 5%;
+  /* Adjust the padding as per your preference */
+  color: #ffffff;
+  font-size: 1em;
+  /* Adjust the font size as per your preference */
+  font-weight: bold;
+  opacity: 0.5;
+  text-align: center;
+}
+
+.stat_analysis-container:hover {
+  background: #fFC285;
+  /* Change the background color on hover */
+}
+
+.fundamentals-container .chart-title,
+.technicals-container .chart-title,
+.ratios_analysis-container .chart-title,
+.statements_analysis-container .chart-title,
+.theory_model_analysis-container .chart-title,
+.charts_analysis-container .chart-title,
+.indicators_analysis-container .chart-title,
+.stat_analysis-container .chart-title {
+  font-family: 'Anybody', sans-serif;
+}

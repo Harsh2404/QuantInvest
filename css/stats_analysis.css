@@ -1,0 +1,118 @@
+.tm-valuations-charts, .tm-effeciency-charts {
+  display: flex;
+  padding: 0 1rem 1.5rem;
+}
+
+.tm-half-charts {
+  width: 48%;
+  margin: 0 1%;
+  box-shadow: 0px 0px 10px #474747;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.tm-half-charts h3 {
+  padding-top: 1rem;
+}
+
+.tm-half-charts input,.tm-half-charts select {
+  width: 90%;
+  color: #ffffff;
+  background-color: #474747;
+  padding: 8px 6px;
+  border: none;
+  border-radius: 7px;
+}
+
+.dcf-upsl {
+  display: flex;
+}
+.tm-half-charts .dcf-upsl input,.tm-half-charts .dcf-upsl select {
+  width: 85%;
+}
+.tm-half-charts .dcf-upsl select {
+  min-width: 2.8rem;
+}
+.tm-half-charts .dcf-upsl div:first-child {
+  flex: 1;
+}
+
+.symb-inp {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.symb-inp input {
+  width: 70%;
+}
+
+.tm-half-charts table {
+  color: #ffffff;
+  padding: 0.5rem
+}
+
+.tm-half-charts table tr {
+  border-bottom: 1px solid #474747;
+}
+
+.tm-half-charts table th,
+.tm-half-charts table td {
+  padding: 2px;
+  color: #ffffff;
+}
+
+.dcf-value-res {
+  color: #ffffff;
+  padding: 0 1rem 1.5rem;
+}
+
+.tm-risk-charts table {
+  color: #ffffff;
+  width: 96%;
+  border: 1px solid #474747;
+  margin: 0 2%;
+}
+.tm-risk-charts table th, .tm-risk-charts table td {
+  border-right: 1px solid #474747;
+  text-align: center;
+  padding: 4px;
+}
+.tm-risk-charts table th:last-child, .tm-risk-charts table td:last-child {
+  border-right: none;
+}
+div#tm-risk-bar {
+  padding: 0 0 0 2rem;
+  flex: 1;
+}
+.tm-risk-container {
+  display: flex;
+  padding: 0 1rem;
+  justify-content: center;
+  align-items: center;
+}
+.tm-risk-container table {
+  margin-bottom: 2rem;
+}
+
+.tm-valuations-charts rect.highcharts-background {
+  fill: black;
+}
+.tm-valuations-charts text {
+  fill: white !important;
+}
+/* #ddm-chart, #dcf-chart {
+  margin-top: -1rem;
+} */
+.blurr-effect {
+  -webkit-filter: blur(3px);
+    -moz-filter: blur(3px);
+    -o-filter: blur(3px);
+    -ms-filter: blur(3px);
+    filter: blur(3px);
+    /* width: 100px; */
+    /* height: 100px; */
+    background-color: #000;
+}

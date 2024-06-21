@@ -1,0 +1,123 @@
+#search {
+  display: flex;
+  margin: 0 auto;
+  padding: 10px;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0px 0px 10px #858585;
+  font-size: 14px;
+  height: auto;
+  min-width: 28rem;
+  padding: 13px 20px;
+  text-align: left;
+  align-items: center;
+  background-color: #f0f3fa;
+  box-sizing: border-box;
+  color: #6a6d78;
+  height: 40px;
+  justify-content: space-between;
+}
+
+#search:focus {
+  outline: none;
+}
+
+#results {
+  position: fixed;
+  width: 55%;
+  top: 14.5%;
+  min-height: 65vh;
+  max-height: 65vh;
+  overflow: auto;
+  background-color: #858585;
+  z-index: 999;
+  left: 2%;
+  font-size: 1rem;
+  border-radius: 25px;
+  scrollbar-color: rgb(39 38 38);
+  display: none;
+}
+.search-list{
+  height: auto;
+}
+.search-list span{
+width: 20%;
+text-align: center;
+  min-height: 7.2vh;
+}
+/* For Webkit browsers (Chrome, Safari) */
+#results::-webkit-scrollbar {
+  width: 4px; /* Adjust the width as desired */
+}
+
+#results::-webkit-scrollbar-thumb {
+  background-color: rgb(39 38 38);
+  border-radius: 25px;
+
+}
+
+
+#results div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  height: 5vh;
+  border-bottom: 1px solid #97989c;
+  color: #131722;
+  font-family: -apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif;
+  /* opacity: 0;
+  animation-name: fade-in;
+  animation-duration: 1s;
+  animation-fill-mode: forwards; */
+}
+
+/* #results div:first-child {
+  animation-name: fade-in;
+
+} */
+
+/* @keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+} */
+
+
+#results div span{
+  /* width: 20%; */
+  text-align: center;
+}
+#results div:hover {
+  background-color: #858585;
+  cursor: pointer;
+}
+
+.search-symbol{
+  width: 20%;
+}
+.search-exchange_country {
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.search-exchange_country p{
+  width: 50%;
+}
+body {
+  background-color: #000000;
+}
+.search-name {
+  max-width: 60%; /* Adjust the width limit as needed */
+  width: 60%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+}
